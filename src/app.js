@@ -5,11 +5,14 @@ const forecast = require("./utils/forecast")
 const geocode = require("./utils/geocode")
 
 const app = express()
+const port = process.env.PORT || 3000;
 
 //Define Paths for express config
 const publicDir = path.join(__dirname, '../public');
 const viewsPath = path.join(__dirname,'../template/views')
 const partialsPath = path.join(__dirname,'../template/partials')
+
+
 
 //Setup handlerbars engine and views location
 app.set('view engine','hbs')
@@ -131,6 +134,6 @@ app.get('*',(req,res)=>{
     })
 })
 
-app.listen(3000, ()=>{
-    console.log('server started 3000');
+app.listen(port, ()=>{
+    console.log('server started port'+port);
 })
