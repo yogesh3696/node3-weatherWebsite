@@ -81,19 +81,22 @@ app.get('/weather', (req,res)=>{
             console.log(latitude);
             console.log(logitude);
             console.log(location);
-            forecast(latitude,logitude,(error, forecasrData) => {
+            forecast(latitude,logitude,(error, forecastData) => {
                 if(error){
                     return res.send({
                         error
                     })
                 }else{
-                    console.log(forecasrData.temperature);
-                    console.log(forecasrData.feelslike);
-                    console.log(forecasrData.wheatherDescription);
+                    console.log(forecastData.temperature);
+                    console.log(forecastData.feelslike);
+                    console.log(forecastData.wheatherDescription);
+                    console.log(forecastData);
+                    
                     res.send({
-                        Forecast : forecasrData.temperature,
-                        FeelsLike :  forecasrData.feelslike,
-                        WheatherDescription : forecasrData.wheatherDescription,
+                        foreCast : forecastData.temperature,
+                        feelsLike :  forecastData.feelslike,
+                        wheatherDescription : forecastData.wheatherDescription,
+                        observationTime : forecastData.obervationTime,
                         address : req.query.address
                     })
                 }
